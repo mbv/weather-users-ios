@@ -1,26 +1,173 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Bli-B4-mfh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Weather-->
+        <scene sceneID="6Ds-Do-csN">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController title="Weather" id="Lpj-XT-nIU" customClass="WeatherTableViewController" customModule="lab2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="u3C-5M-TsF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Lpj-XT-nIU" id="IOG-hV-y8T"/>
+                            <outlet property="delegate" destination="Lpj-XT-nIU" id="ajj-b5-Uex"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Weather" id="sWx-Jz-yJV">
+                        <barButtonItem key="rightBarButtonItem" image="reload" id="qP2-04-kTY">
+                            <connections>
+                                <action selector="reloadWeather:" destination="Lpj-XT-nIU" id="cgZ-Lg-DMe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cAA-kU-zb9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1706" y="501"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="gbJ-Nu-Hw1">
+            <objects>
+                <navigationController id="4pn-pP-dla" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Weather" image="weather" id="GcF-Kg-Mcm"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Czt-pZ-vwL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Lpj-XT-nIU" kind="relationship" relationship="rootViewController" id="kKK-Iv-MOb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4er-L9-Hnv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="544"/>
+        </scene>
+        <!--Users-->
+        <scene sceneID="EEO-Cv-zFh">
+            <objects>
+                <tableViewController id="Ujn-YE-TcQ" customClass="UserTableViewController" customModule="lab2" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="u46-Me-Xna">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Ujn-YE-TcQ" id="pYP-4n-UC6"/>
+                            <outlet property="delegate" destination="Ujn-YE-TcQ" id="6uv-h2-7aC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Users" id="pMD-Tr-DK1"/>
+                    <connections>
+                        <segue destination="IYP-d5-Glu" kind="show" identifier="segueDetailView" id="CH5-oi-tU3"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0WP-PI-yk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1770" y="-301"/>
+        </scene>
+        <!--Detail User View Controller-->
+        <scene sceneID="DaS-0y-FBi">
+            <objects>
+                <viewController storyboardIdentifier="DetailUserViewController" hidesBottomBarWhenPushed="YES" id="IYP-d5-Glu" customClass="DetailUserViewController" customModule="lab2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mqp-LS-V9m"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Jc-R1-guh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k7M-Kh-aeE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pnb-T9-5CK">
+                                <rect key="frame" x="16" y="93" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="3lT-ct-63G"/>
+                                    <constraint firstAttribute="width" secondItem="Pnb-T9-5CK" secondAttribute="height" multiplier="1:1" id="XtJ-zd-bfW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOt-AP-MvJ">
+                                <rect key="frame" x="16" y="231" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jha-1N-VIB">
+                                <rect key="frame" x="158" y="93" width="201" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jha-1N-VIB" firstAttribute="leading" secondItem="Pnb-T9-5CK" secondAttribute="trailing" constant="22" id="DoF-50-rnI"/>
+                            <constraint firstItem="wOt-AP-MvJ" firstAttribute="leading" secondItem="Pnb-T9-5CK" secondAttribute="leading" id="Fh7-oJ-dqM"/>
+                            <constraint firstItem="jha-1N-VIB" firstAttribute="top" secondItem="Pnb-T9-5CK" secondAttribute="top" id="IKI-Hd-7iz"/>
+                            <constraint firstItem="Pnb-T9-5CK" firstAttribute="top" secondItem="Mqp-LS-V9m" secondAttribute="bottom" constant="29" id="X5O-u5-U3o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wOt-AP-MvJ" secondAttribute="trailing" id="dvJ-dB-LiJ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Pnb-T9-5CK" secondAttribute="leading" id="gWY-fn-WEd"/>
+                            <constraint firstItem="wOt-AP-MvJ" firstAttribute="top" secondItem="Pnb-T9-5CK" secondAttribute="bottom" constant="18" id="hXI-CZ-LQq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jha-1N-VIB" secondAttribute="trailing" id="yxl-G2-JNN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="PTl-88-ZIA"/>
+                    <connections>
+                        <outlet property="imageUser" destination="Pnb-T9-5CK" id="ABq-fh-taN"/>
+                        <outlet property="labelDescription" destination="wOt-AP-MvJ" id="3OU-4Z-0a5"/>
+                        <outlet property="labelTitle" destination="jha-1N-VIB" id="9Wk-gF-m7I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dq9-fb-aMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2904.8000000000002" y="-351.27436281859076"/>
+        </scene>
+        <!--Users-->
+        <scene sceneID="8Cz-Us-im5">
+            <objects>
+                <navigationController id="rPF-X4-uPt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Users" image="user" id="a4G-qo-iPG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ddQ-WU-TuQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ujn-YE-TcQ" kind="relationship" relationship="rootViewController" id="GBF-16-AgN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNp-yF-T8r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="-301"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="1Q4-DD-45b">
+            <objects>
+                <tabBarController id="Bli-B4-mfh" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="wql-SC-pOc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="rPF-X4-uPt" kind="relationship" relationship="viewControllers" id="jU3-zd-wrd"/>
+                        <segue destination="4pn-pP-dla" kind="relationship" relationship="viewControllers" id="XxQ-hg-cZR"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LpW-aU-P08" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-46" y="53"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reload" width="23" height="32"/>
+        <image name="user" width="48" height="48"/>
+        <image name="weather" width="48" height="48"/>
+    </resources>
 </document>
